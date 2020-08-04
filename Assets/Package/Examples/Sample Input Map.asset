@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b270f48812f744b8f39915ea97fa93, type: 3}
+  m_Name: Sample Input Map
+  m_EditorClassIdentifier: 
+  mapName: Sample Map
+  sampleButton:
+    inputName: Sample Buttom
+    mappers:
+    - key: 32
+      axis:
+        axisName: 
+        sensitivity: 0
+        deadzone: 0
+        offset: 0
+      state: 0
+    - key: 330
+      axis:
+        axisName: 
+        sensitivity: 0
+        deadzone: 0
+        offset: 0
+      state: 0
+    - key: 330
+      axis:
+        axisName: Vertical
+        sensitivity: 1
+        deadzone: 0
+        offset: 0.5
+      state: 0
