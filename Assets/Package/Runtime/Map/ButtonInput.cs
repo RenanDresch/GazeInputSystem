@@ -1,4 +1,6 @@
-﻿namespace Gaze.InputSystem
+﻿using UnityEngine;
+
+namespace Gaze.InputSystem
 {
     [System.Serializable]
     public class ButtonInput : BaseInput<bool>

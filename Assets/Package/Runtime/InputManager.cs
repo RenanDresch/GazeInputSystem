@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 namespace Gaze.InputSystem
@@ -50,20 +49,11 @@ namespace Gaze.InputSystem
 
         public void InitializeMap(BaseInputLayout inputLayout)
         {
-            var fields = inputLayout.RealType.GetFields(
-                        BindingFlags.NonPublic |
-                        BindingFlags.Instance |
-                        BindingFlags.Public);
-
             inputLayout.buttons = new Dictionary<string, ButtonInput>();
 
-            foreach (var field in fields)
+            foreach (var buttonMap in inputLayout.MapButtons)
             {
-                if (field.FieldType == typeof(ButtonInput))
-                {
-                    ButtonInput button = (ButtonInput)field.GetValue(inputLayout);
-                    inputLayout.buttons.Add(button.InputName, button);
-                }
+                inputLayout.buttons.Add(buttonMap.InputName, buttonMap);
             }
 
             loadedMaps.Add(inputLayout.MapName, inputLayout);
@@ -79,6 +69,14 @@ namespace Gaze.InputSystem
                 {
                     return button.Value;
                 }
+                else
+                {
+                    Debug.LogError("Input Not Found!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Map Not Found!");
             }
 
             return false;
