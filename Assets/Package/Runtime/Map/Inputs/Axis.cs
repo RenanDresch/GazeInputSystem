@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Gaze.InputSystem
 {
     [System.Serializable]
-    public class Axis
+    public class Axis : IEquatable<Axis>
     {
         #region Fields
 
@@ -38,6 +39,11 @@ namespace Gaze.InputSystem
             {
                 return State ? RawValue : 0;
             }
+        }
+
+        public bool Equals(Axis other)
+        {
+            return axisName == other.axisName;
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Gaze.InputSystem
 {
@@ -7,8 +8,14 @@ namespace Gaze.InputSystem
     {
         #region Fields
 
-        [UnityEngine.SerializeField]
-        private ButtonInputMapper[] mappers;
+        [SerializeField]
+        private List<ButtonInputMapper> mappers = new List<ButtonInputMapper>();
+
+        #endregion
+
+        #region Properties
+
+        public ButtonInputMapper[] Mappers => mappers.ToArray();
 
         #endregion
 
@@ -22,13 +29,30 @@ namespace Gaze.InputSystem
 
         internal override void EvaluateInput()
         {
-            foreach(var mapper in mappers)
+            foreach (var mapper in mappers)
             {
-                if(mapper.Modified)
+                if (mapper.Modified)
                 {
                     Value = mapper.state;
                 }
             }
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void AddButtonMapper(ButtonInputMapper newMapper)
+        {
+            foreach(var mapper in mappers)
+            {
+                if(newMapper == mapper)
+                {
+                    return;
+                }
+            }
+
+            mappers.Add(newMapper);
         }
 
         #endregion

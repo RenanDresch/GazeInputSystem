@@ -4,16 +4,12 @@ using UnityEngine;
 namespace Gaze.InputSystem
 {
     [System.Serializable]
-    [CreateAssetMenu(fileName = "New Input Map", menuName = "Input/Input Map")]
-    public class BaseInputLayout : ScriptableObject
+    public class BaseInputLayout
     {
         #region Fields
 
         [SerializeField]
-        private string mapName = default;
-
-        [SerializeField]
-        private ButtonInput[] mapButtons = default;
+        private List<ButtonInput> mapButtons = new List<ButtonInput>();
 
         [SerializeField]
         private ButtonInput[] mapAxes = default;
@@ -21,20 +17,43 @@ namespace Gaze.InputSystem
         [SerializeField]
         private ButtonInput[] mapDirectionals = default;
 
-        internal Dictionary<string, ButtonInput> buttons;
-        internal Dictionary<string, ButtonInput> axis;
-        internal Dictionary<string, ButtonInput> directionals;
-
         #endregion
 
         #region Properties
 
-        public string MapName => mapName;
-
-        internal ButtonInput[] MapButtons => mapButtons;
+        internal ButtonInput[] MapButtons => mapButtons.ToArray();
         internal ButtonInput[] MapAxes => mapAxes;
         internal ButtonInput[] MapDirectionals => mapDirectionals;
 
+
+        #endregion
+
+        #region Public Methods
+
+        public void AddButtonInput(ButtonInput newButton)
+        {
+            foreach(var buttonInput in mapButtons)
+            {
+                if(buttonInput.InputName == newButton.InputName)
+                {
+                    foreach (var newMapper in newButton.Mappers)
+                    {
+                        buttonInput.AddButtonMapper(newMapper);
+                    }
+                    return;
+                }
+            }
+
+            mapButtons.Add(newButton);
+        }
+
+        public void DisposeDirtyActions()
+        {
+            foreach (var buttonInput in mapButtons)
+            {
+                buttonInput.OnInputValueChange.GetPersistentEventCount();
+            }
+        }
 
         #endregion
     }
