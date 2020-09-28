@@ -14,99 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   inputLayout:
-    mapButtons:
+    buttonMaps:
     - inputName: Jump
       mappers:
-      - key: 32
-        axis:
+      - axis:
+          readPositive: 1
+          key: 32
           axisName: 
           sensitivity: 0
           deadzone: 0
           offset: 0
         state: 0
-      - key: 330
-        axis:
+    axisMaps:
+    - inputName: Trigger
+      mappers:
+      - positiveReader:
+          readPositive: 1
+          key: 114
           axisName: 
-          sensitivity: 0
+          sensitivity: 1
           deadzone: 0
           offset: 0
-        state: 0
-      - key: 330
-        axis:
+        negativeReader:
+          readPositive: 1
+          key: 102
           axisName: 
-          sensitivity: 0
+          sensitivity: 1
           deadzone: 0
           offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-      - key: 330
-        axis:
-          axisName: 
-          sensitivity: 0
-          deadzone: 0
-          offset: 0
-        state: 0
-    mapAxes: []
-    mapDirectionals: []
+    directionalMaps: []

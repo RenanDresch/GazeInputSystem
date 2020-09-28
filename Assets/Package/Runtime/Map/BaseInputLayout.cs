@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Gaze.InputSystem
 {
@@ -9,21 +10,21 @@ namespace Gaze.InputSystem
         #region Fields
 
         [SerializeField]
-        private List<ButtonInput> mapButtons = new List<ButtonInput>();
+        private List<ButtonInput> buttonMaps = new List<ButtonInput>();
 
         [SerializeField]
-        private ButtonInput[] mapAxes = default;
+        private List<AxisInput> axisMaps = new List<AxisInput>();
 
         [SerializeField]
-        private ButtonInput[] mapDirectionals = default;
+        private List<DirectionalInput> directionalMaps = new List<DirectionalInput>();
 
         #endregion
 
         #region Properties
 
-        internal ButtonInput[] MapButtons => mapButtons.ToArray();
-        internal ButtonInput[] MapAxes => mapAxes;
-        internal ButtonInput[] MapDirectionals => mapDirectionals;
+        internal ButtonInput[] ButtonMaps => buttonMaps.ToArray();
+        internal AxisInput[] AxisMaps => axisMaps.ToArray();
+        internal DirectionalInput[] DirectionalMaps => directionalMaps.ToArray();
 
 
         #endregion
@@ -32,7 +33,7 @@ namespace Gaze.InputSystem
 
         public void AddButtonInput(ButtonInput newButton)
         {
-            foreach(var buttonInput in mapButtons)
+            foreach(var buttonInput in buttonMaps)
             {
                 if(buttonInput.InputName == newButton.InputName)
                 {
@@ -44,15 +45,41 @@ namespace Gaze.InputSystem
                 }
             }
 
-            mapButtons.Add(newButton);
+            buttonMaps.Add(newButton);
         }
 
-        public void DisposeDirtyActions()
+        public void AddAxisInput(AxisInput newAxis)
         {
-            foreach (var buttonInput in mapButtons)
+            foreach (var axisInput in axisMaps)
             {
-                buttonInput.OnInputValueChange.GetPersistentEventCount();
+                if (axisInput.InputName == newAxis.InputName)
+                {
+                    foreach (var newMapper in newAxis.Mappers)
+                    {
+                        axisInput.AddAxisMapper(newMapper);
+                    }
+                    return;
+                }
             }
+
+            axisMaps.Add(newAxis);
+        }
+
+        public void AddDirectionalInput(DirectionalInput newDirectional)
+        {
+            foreach (var directionalInput in directionalMaps)
+            {
+                if (directionalInput.InputName == newDirectional.InputName)
+                {
+                    foreach (var newMapper in newDirectional.Mappers)
+                    {
+                        directionalInput.AddDirectionalMapper(newMapper);
+                    }
+                    return;
+                }
+            }
+
+            directionalMaps.Add(newDirectional);
         }
 
         #endregion

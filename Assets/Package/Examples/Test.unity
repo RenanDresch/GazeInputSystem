@@ -805,7 +805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &620363323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,7 +945,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.00048828125, y: 0}
-  m_SizeDelta: {x: 100, y: 375}
+  m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0.49999994, y: 0.00000006146729}
 --- !u!114 &774194290
 MonoBehaviour:
@@ -1861,7 +1861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1549851789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1871,13 +1871,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1549851788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: b45b4455dd259504a83dd99e617bb59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: Joystick_0_1
+  m_VerticalAxis: Joystick_0_1
+  m_SubmitButton: Joystick_0_1
+  m_CancelButton: Joystick_0_1
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 1
@@ -1996,6 +1996,7 @@ GameObject:
   - component: {fileID: 1677787737}
   - component: {fileID: 1677787739}
   - component: {fileID: 1677787738}
+  - component: {fileID: 1677787740}
   m_Layer: 5
   m_Name: Movement Circle
   m_TagString: Untagged
@@ -2062,6 +2063,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677787736}
   m_CullTransparentMesh: 0
+--- !u!114 &1677787740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677787736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8feace15fbbbff4fa963154fef678d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Trigger
+  arrow: {fileID: 774194289}
 --- !u!1 &1711586381
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,8 +17,9 @@ MonoBehaviour:
     mapButtons:
     - inputName: Jump
       mappers:
-      - key: 330
-        axis:
+      - axis:
+          readPositive: 0
+          key: 330
           axisName: 
           sensitivity: 0
           deadzone: 0
@@ -26,8 +27,9 @@ MonoBehaviour:
         state: 0
     - inputName: Attack
       mappers:
-      - key: 331
-        axis:
+      - axis:
+          readPositive: 0
+          key: 331
           axisName: 
           sensitivity: 0
           deadzone: 0
@@ -35,8 +37,9 @@ MonoBehaviour:
         state: 0
     - inputName: Interact
       mappers:
-      - key: 332
-        axis:
+      - axis:
+          readPositive: 0
+          key: 332
           axisName: 
           sensitivity: 0
           deadzone: 0
@@ -44,8 +47,9 @@ MonoBehaviour:
         state: 0
     - inputName: Cancel
       mappers:
-      - key: 333
-        axis:
+      - axis:
+          readPositive: 0
+          key: 333
           axisName: 
           sensitivity: 0
           deadzone: 0
